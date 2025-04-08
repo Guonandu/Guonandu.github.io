@@ -1,0 +1,453 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>并行王者：GPU | kewua's Blog</title><meta name="author" content="kewua"><meta name="copyright" content="kewua"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="解密GPU：从CPU的“小弟”到并行计算的“王者”引言：无处不在的GPU 如今，无论你是狂热的游戏玩家、专业的内容创作者，还是前沿的人工智能研究者，你都离不开一个核心硬件——GPU（图形处理器，Graphics Processing Unit）。它从最初只是为了让电脑屏幕显示图像，发展到今天驱动着最复杂的计算任务。但这颗强大的“心脏”是如何诞生的？ 它的内部构造有何奥秘？那些我们耳熟能详的品牌名称">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并行王者：GPU">
+<meta property="og:url" content="https://guonandu.github.io/undefined/2b2eba78.html">
+<meta property="og:site_name" content="kewua&#39;s Blog">
+<meta property="og:description" content="解密GPU：从CPU的“小弟”到并行计算的“王者”引言：无处不在的GPU 如今，无论你是狂热的游戏玩家、专业的内容创作者，还是前沿的人工智能研究者，你都离不开一个核心硬件——GPU（图形处理器，Graphics Processing Unit）。它从最初只是为了让电脑屏幕显示图像，发展到今天驱动着最复杂的计算任务。但这颗强大的“心脏”是如何诞生的？ 它的内部构造有何奥秘？那些我们耳熟能详的品牌名称">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.dexbug.com/i/2025/04/08/j5najo.jpg">
+<meta property="article:published_time" content="2025-04-08T03:01:13.000Z">
+<meta property="article:modified_time" content="2025-04-08T04:48:38.775Z">
+<meta property="article:author" content="kewua">
+<meta property="article:tag" content="一会就睡觉">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.dexbug.com/i/2025/04/08/j5najo.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "并行王者：GPU",
+  "url": "https://guonandu.github.io/undefined/2b2eba78.html",
+  "image": "https://img.dexbug.com/i/2025/04/08/j5najo.jpg",
+  "datePublished": "2025-04-08T03:01:13.000Z",
+  "dateModified": "2025-04-08T04:48:38.775Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "kewua",
+      "url": "https://guonandu.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/siteicon/gnd.jpg"><link rel="canonical" href="https://guonandu.github.io/undefined/2b2eba78.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#3b70fc"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/128.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="mask-icon" href="/img/siteicon/128.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":3,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '并行王者：GPU',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="kewua's Blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(https://img.dexbug.com/i/2025/04/06/tupleo.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/siteicon/gnd.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/music/"><i class="fa-fw fas fa-music faa-tada"></i><span> 音乐馆</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/fcircle/"><i class="fa-fw fab fa-artstation faa-tada"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dongman"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-guanyu_o"></use></svg><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.dexbug.com/i/2025/04/08/j5najo.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">kewua's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">并行王者：GPU</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/music/"><i class="fa-fw fas fa-music faa-tada"></i><span> 音乐馆</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/fcircle/"><i class="fa-fw fab fa-artstation faa-tada"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dongman"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-guanyu_o"></use></svg><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">并行王者：GPU</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-08T03:01:13.000Z" title="发表于 2025-04-08 11:01:13">2025-04-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-08T04:48:38.775Z" title="更新于 2025-04-08 12:48:38">2025-04-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="解密GPU：从CPU的“小弟”到并行计算的“王者”"><a href="#解密GPU：从CPU的“小弟”到并行计算的“王者”" class="headerlink" title="解密GPU：从CPU的“小弟”到并行计算的“王者”"></a>解密GPU：从CPU的“小弟”到并行计算的“王者”</h1><p><strong>引言：无处不在的GPU</strong></p>
+<p>如今，无论你是<span class='p blue'>狂热的游戏玩家</span>、<span class='p green'>专业的内容创作者</span>，还是<span class='p red'>前沿的人工智能研究者</span>，你都离不开一个核心硬件——<emp>GPU</emp>（图形处理器，Graphics Processing Unit）。它从最初只是为了让电脑屏幕显示图像，发展到今天驱动着最复杂的计算任务。<u>但这颗强大的“心脏”是如何诞生的？</u> 它的内部构造有何奥秘？那些我们耳熟能详的品牌名称（如<kbd>GeForce</kbd>、<kbd>Radeon</kbd>）又代表着什么？它又是如何一步步进化到今天的形态？这篇博客将带你深入浅出地了解GPU的世界。</p>
+<h2 id="一、-GPU的起源：CPU不堪重负的“图形任务”"><a href="#一、-GPU的起源：CPU不堪重负的“图形任务”" class="headerlink" title="一、 GPU的起源：CPU不堪重负的“图形任务”"></a>一、 GPU的起源：CPU不堪重负的“图形任务”</h2><p>在个人电脑发展的早期，所有的计算任务，包括图形显示，都由<kbd>CPU</kbd>（中央处理器，Central Processing Unit）一肩挑。CPU的设计哲学是 “<span class='p blue'>少而精</span>”，它拥有少量（几个到几十个）强大而复杂的计算核心，擅长处理逻辑判断、串行任务和通用计算。</p>
+<p>然而，随着图形界面（GUI）和3D游戏的兴起，图形渲染任务变得越来越<span class='p red'>繁重</span>。图形渲染有一个显著特点：<emp>高度并行性</emp>。想象一下屏幕上的数百万个像素点，很多像素点的颜色、光照计算可以同时进行，彼此独立。让擅长串行任务的CPU来处理这种大规模并行任务，效率极其低下，很快就成为了系统瓶颈。</p>
+<div class="tip bolt, 技术演进"><p>为了解放CPU，让它专注于更擅长的通用计算，业界开始探索专门处理图形任务的硬件：</p>
+<ol>
+<li><strong>2D加速卡</strong>： 最初的尝试，主要加速窗口绘制、图像填充等基本2D操作。</li>
+<li><strong>3D加速卡</strong>： 随着《<kbd>毁灭战士</kbd>》、《<kbd>雷神之锤</kbd>》等3D游戏的出现，对3D图形处理的需求激增。像 <kbd>3dfx Voodoo</kbd> 这样的早期3D加速卡应运而生，它们引入了纹理映射、几何转换等专用硬件单元，极大地提升了3D游戏体验。这可以看作是GPU的<wavy>雏形</wavy>。</li>
+<li><strong>可编程GPU的诞生</strong>： 早期的图形加速卡大多采用“<span class='p gray'>固定功能管线</span>”（Fixed-Function Pipeline），硬件能做什么图形效果是固定的。大约在21世纪初，NVIDIA的<kbd>GeForce 3</kbd> 和 ATI（<span class='p gray'>后被AMD收购</span>）的<kbd>Radeon 8500</kbd>`等产品引入了<span class='p gray'>可编程着色器</span>（Programmable Shaders）。这意味着开发者可以通过编程，让GPU执行更复杂、更具创意的图形效果，而不仅仅局限于硬件预设的功能。这标志着现代GPU的真正诞生，它不再仅仅是“图形”处理器，更是一个强大的“<span class='p green'>并行</span>”处理器。</li>
+</ol>
+</div>
+<h2 id="二、-GPU的构造：并行计算的“千军万马”"><a href="#二、-GPU的构造：并行计算的“千军万马”" class="headerlink" title="二、 GPU的构造：并行计算的“千军万马”"></a>二、 GPU的构造：并行计算的“千军万马”</h2><p>与CPU“<span class='p blue'>少而精</span>”的核心设计理念截然不同，GPU的设计哲学是 “<span class='p green'>多而简</span>”。它的核心目标是同时执行海量的简单计算任务。其主要构造包括：</p>
+<ul>
+<li><strong>流处理器/CUDA核心（Stream Processors / <kbd>CUDA Cores</kbd>）</strong>： 这是GPU进行计算的基本单元。一块现代GPU通常拥有成百上千甚至上万个这样的核心。虽然单个核心的计算能力和复杂度远不如CPU核心，但胜在数量庞大，能够像“<emp>千军万马</emp>”一样同时处理大量并行数据。NVIDIA称其为<kbd>CUDA核心</kbd>，AMD则称其为<kbd>流处理器</kbd>，本质上都是执行并行计算任务的基础单元。</li>
+<li><strong>显存（VRAM - Video RAM）</strong>： GPU需要高速存取大量数据（如纹理、模型顶点、帧缓冲等）。显存是专为GPU设计的高带宽、大容量内存，通常使用<kbd>GDDR</kbd>（Graphics Double Data Rate）类型的内存颗粒（如<kbd>GDDR6</kbd>, <kbd>GDDR6X</kbd>），其带宽远超系统主内存（RAM），确保数据能够快速喂给成千上万的计算核心。</li>
+<li><strong>光栅单元（ROPs）和纹理单元（TMUs）</strong>： 这些是更传统的图形处理单元。纹理单元负责将纹理（图片）贴到3D模型表面，光栅单元则负责将最终的3D场景数据转换成屏幕上显示的2D像素。</li>
+<li><strong>专用核心（近年来新增）</strong>：<ul>
+<li><span class='p green'>Tensor Cores</span>（张量核心，NVIDIA）： 专门用于加速AI和机器学习中的矩阵运算，极大提升了深度学习训练和推理的效率。 <span class='p cyan'>RT Cores</span>（光线追踪核心，NVIDIA）： 专门用于加速光线追踪计算，使得实时光线追踪成为可能，带来更逼真的光影效果。AMD也在其RDNA架构中加入了类似的光线加速器（Ray Accelerators）。</li>
+</ul>
+</li>
+</ul>
+<div class="tip home, 简单类比"><p>如果CPU是一位经验丰富、能处理各种复杂任务的大厨，那么GPU就是一支由成百上千位帮厨组成的庞大队伍，他们可能只会切菜、配菜，但可以同时处理极大量的食材，效率惊人。</p>
+</div>
+<h2 id="三、-品牌解读：GeForce、Radeon-与-Arc"><a href="#三、-品牌解读：GeForce、Radeon-与-Arc" class="headerlink" title="三、 品牌解读：GeForce、Radeon 与 Arc"></a>三、 品牌解读：GeForce、Radeon 与 Arc</h2><p>目前消费级GPU市场主要由三大巨头主导：NVIDIA、AMD 和 Intel。：</p>
+<ul>
+<li><strong><span class='p green'>NVIDIA GeForce</span>（英伟达 精视）</strong>：</li>
+<li>GeForce 是 “<u>Geometry</u>“ (几何) 和 “<u>Force</u>“ (力量) 的组合词。</li>
+<li><p>含义： 这个名字直接强调了其在处理3D图形几何运算方面的强大能力和性能力量。自1999年发布第一代<kbd>GeForce 256</kbd>（号称全球首款GPU）以来，GeForce系列一直代表着NVIDIA在游戏和消费级图形领域的技术实力。</p>
+</li>
+<li><p><emp>前缀 (Prefix Meaning)</emp>：在数字型号之前的前缀是区分显卡核心特性和市场定位的关键。</p>
+<ul>
+<li><kbd>RTX</kbd>：通常代表 <strong>“Ray Tracing Texel eXtreme”</strong>，是NVIDIA当前的中高端及旗舰游戏/专业显卡系列。其核心标志是内置了用于<emp>实时光线追踪 (Real-time Ray Tracing)</emp>的专用 <kbd>RT Cores</kbd> 和用于 <emp>AI 加速 (如 DLSS - 深度学习超级采样)</emp> 的 <kbd>Tensor Cores</kbd>。追求最新图形技术和高性能的用户应关注此系列 (例如 <kbd>RTX 4090</kbd>, <kbd>RTX 3070</kbd>)。</li>
+<li><kbd>GTX</kbd>：通常代表 <strong>“Giga Texel Shader eXtreme”</strong>。这是 <kbd>RTX</kbd> 出现之前的NVIDIA高性能游戏显卡系列，专注于传统的光栅化渲染性能。它们<emp>不具备</emp>专用的光追核心和张量核心。在 <kbd>RTX</kbd> 普及后，<kbd>GTX</kbd> 品牌主要用于一些中端或入门级游戏显卡（如 <kbd>GTX 1660 Super</kbd>)，或代表较旧的型号 (例如 <kbd>GTX 1080 Ti</kbd>)。</li>
+<li><kbd>GT</kbd>：一般认为是 <strong>“Gran Turismo”</strong> 的缩写。这是NVIDIA的<emp>入门级/亮机卡</emp>系列，提供基础的图形输出能力，适用于办公、影音播放和非常轻度的游戏 (例如 <kbd>GT 1030</kbd>, <kbd>GT 710</kbd>)。性能较低。</li>
+</ul>
+</li>
+<li><p><emp>数字型号的解读</emp>：</p>
+<ul>
+<li><emp>世代划分 (Generation)</emp>：型号中的前一或两位数字通常代表GPU架构的<emp>代数</emp>。例如，<kbd>GeForce 5090</kbd> 属于第 <kbd>50</kbd> 代 (Blackwell 架构)，<kbd>GeForce 4090</kbd> 属于第 <kbd>40</kbd> 代 (Ada Lovelace 架构)，<kbd>3080</kbd> 属于第 <kbd>30</kbd> 代 (Ampere 架构)。数字越大，通常代表架构越新。</li>
+<li><emp>性能层级 (Performance Tier)</emp>：在同一代产品中，紧随世代标识后的数字（通常是后两位）表示其<emp>性能定位</emp>。数字越大，代表核心规格越高，性能越强，价格也通常越高。例如，在GeForce 40系中，性能层级大致为 <kbd>90</kbd> &gt; <kbd>80</kbd> &gt; <kbd>70</kbd> &gt; <kbd>60</kbd> &gt; <kbd>50</kbd>。因此，<kbd>RTX 4090</kbd> 是旗舰，<kbd>RTX 4070</kbd> 是高端，<kbd>RTX 4060</kbd> 是主流。</li>
+<li><emp>重要提示</emp>：<emp>不能仅凭数字大小跨代比较性能</emp>。例如，<kbd>RTX 4060</kbd> 的性能需要与 <kbd>RTX 3070</kbd> 或 <kbd>RTX 3060 Ti</kbd> 等上一代显卡进行具体评测对比才能确定相对强弱。</li>
+</ul>
+</li>
+<li><p><emp>后缀 (Suffix Meaning)</emp>：后缀是对数字型号定位的进一步细化。</p>
+<ul>
+<li><kbd>Ti</kbd> (Titanium - 钛)：通常表示对应数字型号的<emp>显著增强版</emp>。它拥有比原版型号（无后缀）更多的CUDA核心、更高的频率或更强的显存配置，性能更强。例如，<kbd>4070 Ti</kbd> 性能强于 <kbd>4070</kbd>，<kbd>3060 Ti</kbd> 强于 <kbd>3060</kbd>。<kbd>Ti</kbd> 型号通常是该数字级别中的高端选择。</li>
+<li><kbd>SUPER</kbd>：与 <kbd>Ti</kbd> 类似，也表示<emp>性能增强版</emp>。NVIDIA 会根据市场情况和产品布局选择使用 <kbd>Ti</kbd> 或 <kbd>SUPER</kbd>，有时甚至两者并存（如 <kbd>4070 SUPER</kbd>, <kbd>4070 Ti SUPER</kbd>, <kbd>4080 SUPER</kbd>），用于更精细地划分市场区间，提供介于标准版和更高一级（或<kbd>Ti</kbd>版）之间的性能选项。</li>
+<li>无后缀：通常代表该数字层级的<emp>标准型号</emp>，是该性能区间的基础版本。例如 <kbd>4070</kbd>，<kbd>4060</kbd>。</li>
+<li><kbd>LE</kbd> (Lite Edition - 精简版)：历史上曾使用，代表规格有所<emp>削减</emp>的版本，定位和价格更低。近年来较少在桌面高端卡上使用。</li>
+<li><kbd>M</kbd> / <kbd>Laptop GPU</kbd>：明确标识为<emp>移动版/笔记本显卡</emp>。这些显卡为适应笔记本的功耗和散热限制而设计，其核心规格和实际性能通常<emp>低于</emp>同名的桌面版显卡。例如，笔记本上的 <kbd>GeForce RTX 4070 Laptop GPU</kbd> 性能会弱于桌面版的 <kbd>GeForce RTX 4070</kbd>。</li>
+<li><kbd>D</kbd> (Dragon中国市场特供版)：这是一款针对<emp>中国市场</emp>的定制型号。为了符合中国出口管制政策（如美国对高性能计算芯片的限制），对部分参数（如AI性能）进行了调整，但仍保持游戏性能。 <kbd>5090D</kbd>的AI算力（2375 TOPS）比标准版<kbd>5090</kbd>（约3350 TOPS）降低约30%，但游戏性能基本一致。</li>
+</ul>
+</li>
+<li><p><strong><span class='p red'>AMD Radeon</span>（超微 镭龙）</strong>：</p>
+</li>
+<li>Radeon 这个词的来源有<wavy>多种说法</wavy>，可能与 “<u>Radius</u>“ (半径，引申为范围、影响) 或 “<u>Radium</u>“ (镭，一种放射性元素，象征能量、光芒) 相关，也有说法结合了 “<u>Ray</u>“ (光线) 和 “<u>Aeon</u>“ (永世，象征持久强大)。</li>
+<li><p>含义： 不论确切来源如何，Radeon这个品牌名旨在传递出视觉冲击力、高性能和技术前沿的形象。它最初由ATI公司于2000年推出，在ATI被AMD收购后，Radeon品牌得以延续并发展壮大，成为与GeForce直接竞争的核心力量。</p>
+</li>
+<li><p><emp>前缀 (Prefix Meaning)</emp>：</p>
+<ul>
+<li><kbd>RX</kbd>：通常指 <strong>“Radeon eXperience”</strong>。这是AMD当前的主流及中高端游戏显卡系列，是NVIDIA <kbd>GTX</kbd> 和 <kbd>RTX</kbd> 系列的直接竞争对手。从 <kbd>RX 6000</kbd> 系列开始，AMD显卡也加入了对<emp>硬件加速光线追踪</emp>的支持 (通过 Ray Accelerators)，并推出了 <kbd>FSR (FidelityFX Super Resolution)</kbd> 技术来提升游戏性能 (例如 <kbd>RX 7900 XTX</kbd>, <kbd>RX 6800 XT</kbd>)。</li>
+<li>（旧前缀）：在 <kbd>RX</kbd> 之前，AMD 使用过 <kbd>R9</kbd>, <kbd>R7</kbd>, <kbd>R5</kbd>, <kbd>R3</kbd> 等前缀（数字越大通常性能越高），以及更早的 <kbd>HD</kbd> 系列。这些现在已较少用于命名新型号。</li>
+</ul>
+</li>
+<li><p><emp>数字型号的解读</emp>：</p>
+<ul>
+<li><emp>系列/世代划分 (Series/Generation)</emp>：型号中的第一位数字通常代表GPU架构的<emp>系列或代数</emp>。例如，<kbd>Radeon RX 7900 XTX</kbd> 属于 <kbd>7000</kbd> 系列 (RDNA 3 架构)，<kbd>RX 6800 XT</kbd> 属于 <kbd>6000</kbd> 系列 (RDNA 2 架构)。数字越大，通常代表架构越新。</li>
+<li><emp>性能层级 (Performance Tier)</emp>：在同一系列中，紧随系列标识后的数字（通常是后三位中的前一或两位）表示其<emp>性能定位</emp>。数字越大，代表核心规格越高（如更多的计算单元、更高的频率、更优的显存配置），性能越强，价格也通常越高。例如，在Radeon 7000系列中，性能层级大致为 <kbd>7900</kbd> &gt; <kbd>7800</kbd> &gt; <kbd>7700</kbd> &gt; <kbd>7600</kbd>。<kbd>7900</kbd>级别是旗舰/次旗舰，<kbd>7800</kbd>/<kbd>7700</kbd>是高端/甜点，<kbd>7600</kbd>是主流。</li>
+<li><emp>重要提示</emp>：同样，<emp>不能仅凭数字大小跨代比较性能</emp>。例如，<kbd>Radeon RX 7600</kbd> 的性能需要与 <kbd>RX 6700 XT</kbd> 或 <kbd>RX 6650 XT</kbd> 等上一代显卡进行具体评测对比。</li>
+</ul>
+</li>
+<li><p><emp>后缀 (Suffix Meaning)</emp>：</p>
+<ul>
+<li><kbd>XTX</kbd>：通常代表该数字层级中的<emp>顶级型号</emp>，拥有该层级内最高的规格和最强的性能。例如，<kbd>7900 XTX</kbd> 是7000系列目前的旗舰卡。</li>
+<li><kbd>XT</kbd> (eXTreme / eXtended)：通常代表该数字层级中的<emp>高端或次旗舰型号</emp>。性能强劲，仅次于（或有时等于）XTX型号（如果同数字级别有XTX的话），或者作为该数字级别的最高型号（如果无XTX）。例如 <kbd>7900 XT</kbd> 略低于 <kbd>7900 XTX</kbd>，而 <kbd>7800 XT</kbd> 是7800级别中的高性能型号。</li>
+<li>无后缀：通常是该数字层级的<emp>标准版或主流型号</emp>，定位低于带XT或XTX后缀的同数字型号。例如 <kbd>7600</kbd>。</li>
+<li><kbd>GRE</kbd> (Golden Rabbit Edition - 金兔版)：这是AMD在特定时期（如兔年）针对特定市场（主要是中国大陆）推出的<emp>特殊版本</emp>。其规格和性能定位可能比较独特，不完全遵循常规的XT/无后缀层级，需要单独查看其规格和评测。例如 <kbd>RX 7900 GRE</kbd>，<kbd>RX 6750 GRE</kbd>。</li>
+<li><kbd>M</kbd>：同样用于标识<emp>移动版/笔记本显卡</emp>。例如 <kbd>Radeon RX 7900M</kbd>，其性能会因功耗限制而低于桌面版。</li>
+<li><kbd>Pro</kbd>：通常指AMD面向<emp>专业工作站</emp>的显卡系列，如 <kbd>Radeon Pro W7900</kbd>，其驱动和特性针对专业应用（如CAD、DCC）优化，与面向游戏和消费市场的Radeon RX系列不同。</li>
+</ul>
+</li>
+<li><p><strong><span class='p blue'>Intel Arc</span>（英特尔 锐炫）</strong>：</p>
+</li>
+<li>作为CPU巨头，英特尔也正凭借Arc品牌重新发力独立显卡市场。”Arc” 意为“<emp>弧光</emp>”或“<emp>篇章</emp>”，象征着开启新的旅程和可能性，意图在由NVIDIA和AMD主导的市场中划出自己的轨迹。</li>
+<li><p><emp>型号结构的解读</emp>： (Intel Arc 目前未使用像 RTX/RX 这样的明确前缀来区分核心技术类别，而是用字母代表架构代数)</p>
+<ul>
+<li><emp>品牌系列 (Brand Series)</emp>：目前消费级独立显卡均以 <kbd>A</kbd> 开头，代表其第一代 <kbd>Alchemist</kbd> 架构。未来可能会有 <kbd>B</kbd> (Battlemage), <kbd>C</kbd> (Celestial) 等系列。</li>
+<li><emp>性能层级 (Performance Tier)</emp>：紧随 <kbd>A</kbd> 之后的<strong>第一个数字</strong>表示性能档次。数字越大，定位越高。目前主要有：<ul>
+<li><kbd>7</kbd> 系列 (<kbd>A7xx</kbd>)：代表<emp>高性能/爱好者</emp>级别，如 <kbd>A770</kbd> 和 <kbd>A750</kbd>。</li>
+<li><kbd>5</kbd> 系列 (<kbd>A5xx</kbd>)：代表<emp>主流性能</emp>级别，如 <kbd>A580</kbd>。</li>
+<li><kbd>3</kbd> 系列 (<kbd>A3xx</kbd>)：代表<emp>入门级/基础性能</emp>级别，如 <kbd>A380</kbd> 和 <kbd>A310</kbd>。</li>
+</ul>
+</li>
+<li><emp>同层级细分</emp>：在同一性能层级内（如 <kbd>7</kbd> 系列），<strong>后两位数字</strong>进一步细分性能。数字越大，通常规格越高，性能越强。例如，<kbd>A770</kbd> 定位高于 <kbd>A750</kbd>。</li>
+</ul>
+</li>
+<li><p><emp>后缀与标识 (Suffix & Identifier Meaning)</emp>：</p>
+<ul>
+<li>无后缀：通常是该型号的<emp>标准版本</emp>。</li>
+<li><kbd>Limited Edition</kbd>：这是Intel官方自己设计和销售的<emp>公版显卡</emp>版本。它们通常有独特的外观设计和较好的做工用料，但其核心性能规格与合作厂商（AIC）生产的同型号标准版显卡<emp>基本一致</emp>。</li>
+<li>显存容量标识：有时型号后会直接标注显存容量，这对性能（尤其在高分辨率下）有直接影响。例如，<kbd>A770</kbd> 同时存在 <kbd>16GB</kbd> 和 <kbd>8GB</kbd> 两个版本，<kbd>16GB</kbd> 版本通常性能表现更好或在特定场景下更有优势。</li>
+<li><emp>（未来可能的）移动版标识</emp>：虽然目前命名体系相对简洁，但未来笔记本显卡可能会使用 <kbd>M</kbd> 或类似的后缀来区分。</li>
+</ul>
+</li>
+<li><p><emp>重要提示</emp>：</p>
+<ul>
+<li>Intel Arc 是较新的产品线，其驱动程序仍在快速迭代优化中，实际游戏和应用表现可能会随驱动更新而变化。</li>
+<li>与其他品牌（NVIDIA/AMD）显卡比较性能时，不能仅看数字，必须参考<emp>独立的第三方评测</emp>数据。</li>
+</ul>
+</li>
+</ul>
+<p>这些品牌、前缀、数字和后缀共同构成了显卡型号的完整信息，理解它们有助于我们快速判断显卡的大致定位、核心技术和性能级别。</p>
+<h2 id="四、-永不止步的进化：GPU如何持续优化？"><a href="#四、-永不止步的进化：GPU如何持续优化？" class="headerlink" title="四、 永不止步的进化：GPU如何持续优化？"></a>四、 永不止步的进化：GPU如何持续优化？</h2><p>GPU性能的飞速发展，得益于以下几个关键因素的持续推动：</p>
+<details class="folding-tag" yellow><summary> open </summary>
+              <div class='content'>
+              <p><div class='checkbox checked green'><input type="checkbox" checked="checked"/>            <p>制程工艺的进步（遵循摩尔定律）</p>            </div> 与CPU类似，GPU也受益于半导体制程工艺的不断缩小（如从 <kbd>28nm</kbd> 到 <kbd>14nm</kbd>，再到 <kbd>7nm</kbd>、<kbd>5nm</kbd> 甚至更小）。更先进的制程意味着可以在同样大小的芯片上集成更多的晶体管（更多的核心、更大的缓存），同时也能提升运行频率并降低功耗。</p><p><div class='checkbox checked green'><input type="checkbox" checked="checked"/>            <p>架构的革新</p>            </div> 每一代新的GPU（如NVIDIA的Pascal -&gt; Turing -&gt; Ampere -&gt; Ada Lovelace，AMD的GCN -&gt; RDNA -&gt; RDNA 2 -&gt; RDNA 3）都会带来架构上的重大改进。这包括：</p><ul><li><div class='checkbox checked blue'><input type="radio" checked="checked"/><pre><code>    &lt;p&gt;核心设计优化&lt;/p&gt;    &lt;/div&gt;：提升单个流处理器/CUDA核心的效率和功能。</code></pre></li><li><div class='checkbox checked blue'><input type="radio" checked="checked"/><pre><code>    &lt;p&gt;并行效率提升&lt;/p&gt;    &lt;/div&gt;：改进任务调度机制，让数千个核心协同工作得更高效。</code></pre></li><li><div class='checkbox checked blue'><input type="radio" checked="checked"/><pre><code>    &lt;p&gt;内存系统增强&lt;/p&gt;    &lt;/div&gt;：提升显存带宽和容量，引入更有效的缓存层级。</code></pre></li><li><div class='checkbox checked blue'><input type="radio" checked="checked"/><pre><code>    &lt;p&gt;引入专用硬件&lt;/p&gt;    &lt;/div&gt;：如前面提到的&lt;span class=&#39;p yellow&#39;&gt;Tensor Core&lt;/span&gt;和&lt;span class=&#39;p cyan&#39;&gt;RT Core&lt;/span&gt;，针对特定新兴应用进行硬件加速。</code></pre></li></ul><p><div class='checkbox checked green'><input type="checkbox" checked="checked"/>            <p>软件与生态的协同</p>            </div></p><ul><li><strong>驱动程序优化</strong>： 显卡驱动是连接硬件和操作系统的桥梁，持续优化的驱动能显著提升游戏和应用的性能与兼容性。</li><li><strong>图形API的演进</strong>： <kbd>DirectX</kbd>（微软）、<kbd>Vulkan</kbd>（Khronos Group）、<kbd>Metal</kbd>（苹果）等图形API不断发展，让开发者能更底层、更高效地调用GPU资源。</li><li><strong>计算平台</strong>（如<kbd>CUDA</kbd>、<kbd>ROCm</kbd>）： NVIDIA的CUDA平台极大地推动了GPU在通用计算（GPGPU）领域的应用，特别是在AI和科学计算方面。AMD也在努力推广其ROCm平台。</li></ul><p><div class='checkbox checked green'><input type="checkbox" checked="checked"/>            <p>应用需求的驱动</p>            </div></p><ul><li><strong>游戏</strong>： 对更高分辨率、更高帧率、更逼真画质（如光线追踪）的追求，是GPU发展的最直接动力之一。</li><li><strong>人工智能与数据科学</strong>： AI模型的训练和推理需要巨大的并行计算能力，GPU恰好满足了这一需求，成为AI领域的核心硬件。</li><li><strong>专业视觉化与科学计算</strong>： 影视渲染、工程模拟、气象预测等专业领域对GPU的计算精度和速度提出了越来越高的要求。</li></ul>
+              </div>
+            </details>
+<h2 id="五、-结语：不止于图形，GPU的未来已来"><a href="#五、-结语：不止于图形，GPU的未来已来" class="headerlink" title="五、 结语：不止于图形，GPU的未来已来"></a>五、 结语：不止于图形，GPU的未来已来</h2><p>从最初为CPU分担图形渲染任务的“<span class='p gray'>小助手</span>”，到今天成为驱动游戏、AI、科学计算等众多前沿领域的“<span class='p yellow h2'>并行计算巨擘</span>”，GPU走过了一条波澜壮阔的进化之路。其“<span class='p green'>多而简</span>”的核心设计理念，使其在处理大规模并行任务时拥有无与伦比的优势。</p>
+<p>理解了GPU的起源、构造、品牌含义以及持续进步的动力，我们更能体会到这项技术对现代数字世界产生的深远影响。随着AI的进一步融合、元宇宙概念的探索以及科学计算边界的不断拓展，GPU的未来必将更加精彩，继续在科技浪潮之巅扮演着关键角色。</p>
+<p class='p center logo large'>GPU: The Engine of Modern Computing</p>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Guonandu.github.io">kewua</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://guonandu.github.io/undefined/2b2eba78.html">https://guonandu.github.io/undefined/2b2eba78.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://Guonandu.github.io" target="_blank">kewua's Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://img.dexbug.com/i/2025/04/08/j5najo.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/undefined/c0a411bf.html" title="深入解析CPU"><img class="cover" src="https://img.dexbug.com/i/2025/04/07/xo922d.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">深入解析CPU</div></div><div class="info-2"><div class="info-item-1">深入解析CPU：从架构历史到核心单元，再到GPU与NPU及型号解读引言中央处理器（CPU，Central Processing Unit）被誉为计算机的 大脑，负责执行指令、处理数据，是决定计算机性能的核心部件。理解CPU的架构、内部工作原理以及其与其他处理单元（如 GPU、NPU）的关系，对于认识现代计算技术至关重要。本文将带您深入了解CPU的世界。 一、CPU架构的演进：从历史到现代CPU架构定义了CPU如何理解和执行指令，是软硬件之间的桥梁。其发展历程大致可分为以下几个阶段：  早期探索与微处理器诞生：  早期计算机使用真空管、晶体管搭建逻辑电路。 1971年，Intel推出了世界上第一款商用微处理器 Intel 4004，将运算器和控制器集成到单一芯片上，标志着微处理器时代的开始。   指令集架构（ISA）之争：CISC vs RISC：  CISC (Complex Instruction Set Computer)： 代表：Intel的 x86 架构（及其后续的...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/siteicon/gnd.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">kewua</div><div class="author-info-description">一个抑郁的人</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Guonandu/Guonandu.github.io"><i class="fab fa-github"></i><span>访问（源码）</span></a><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://t.me/kewuaaaa" target="_blank" title="telegram"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-telegram"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://github.com/Guonandu" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-github"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://discord.com/invite/mf8XBFc3" target="_blank" title="discord"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-discord"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.instagram.com/guonandu2?igsh=MXV1YTcxMTZvd2FoOA==" target="_blank" title="insgram"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-Insgram"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://x.com/GuoNandu" target="_blank" title="X"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-tuite"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://img.dexbug.com/i/2025/04/06/yuk5n6.jpg" target="_blank" title="weixin"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-weixin"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/499301507?spm_id_from=333.1007.0.0" target="_blank" title="BiliBili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a><a class="social-icon faa-parent animated-hover" href="tencent://Message/?Uin=2268025923&amp;amp;websiteName=local.edu.com:8888=&amp;amp;Menu=yes" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shejiaotubiao-39"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">期待更新</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86GPU%EF%BC%9A%E4%BB%8ECPU%E7%9A%84%E2%80%9C%E5%B0%8F%E5%BC%9F%E2%80%9D%E5%88%B0%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E7%9A%84%E2%80%9C%E7%8E%8B%E8%80%85%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">解密GPU：从CPU的“小弟”到并行计算的“王者”</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-GPU%E7%9A%84%E8%B5%B7%E6%BA%90%EF%BC%9ACPU%E4%B8%8D%E5%A0%AA%E9%87%8D%E8%B4%9F%E7%9A%84%E2%80%9C%E5%9B%BE%E5%BD%A2%E4%BB%BB%E5%8A%A1%E2%80%9D"><span class="toc-number">1.1.</span> <span class="toc-text">一、 GPU的起源：CPU不堪重负的“图形任务”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-GPU%E7%9A%84%E6%9E%84%E9%80%A0%EF%BC%9A%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E7%9A%84%E2%80%9C%E5%8D%83%E5%86%9B%E4%B8%87%E9%A9%AC%E2%80%9D"><span class="toc-number">1.2.</span> <span class="toc-text">二、 GPU的构造：并行计算的“千军万马”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81-%E5%93%81%E7%89%8C%E8%A7%A3%E8%AF%BB%EF%BC%9AGeForce%E3%80%81Radeon-%E4%B8%8E-Arc"><span class="toc-number">1.3.</span> <span class="toc-text">三、 品牌解读：GeForce、Radeon 与 Arc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E6%B0%B8%E4%B8%8D%E6%AD%A2%E6%AD%A5%E7%9A%84%E8%BF%9B%E5%8C%96%EF%BC%9AGPU%E5%A6%82%E4%BD%95%E6%8C%81%E7%BB%AD%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">四、 永不止步的进化：GPU如何持续优化？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81-%E7%BB%93%E8%AF%AD%EF%BC%9A%E4%B8%8D%E6%AD%A2%E4%BA%8E%E5%9B%BE%E5%BD%A2%EF%BC%8CGPU%E7%9A%84%E6%9C%AA%E6%9D%A5%E5%B7%B2%E6%9D%A5"><span class="toc-number">1.5.</span> <span class="toc-text">五、 结语：不止于图形，GPU的未来已来</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/undefined/2b2eba78.html" title="并行王者：GPU"><img src="https://img.dexbug.com/i/2025/04/08/j5najo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="并行王者：GPU"/></a><div class="content"><a class="title" href="/undefined/2b2eba78.html" title="并行王者：GPU">并行王者：GPU</a><time datetime="2025-04-08T03:01:13.000Z" title="发表于 2025-04-08 11:01:13">2025-04-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/c0a411bf.html" title="深入解析CPU"><img src="https://img.dexbug.com/i/2025/04/07/xo922d.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入解析CPU"/></a><div class="content"><a class="title" href="/undefined/c0a411bf.html" title="深入解析CPU">深入解析CPU</a><time datetime="2025-04-07T12:25:33.000Z" title="发表于 2025-04-07 20:25:33">2025-04-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/85b7cc76.html" title="现代网络代理与隧道协议"><img src="https://img.dexbug.com/i/2025/04/07/vnrb67.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="现代网络代理与隧道协议"/></a><div class="content"><a class="title" href="/undefined/85b7cc76.html" title="现代网络代理与隧道协议">现代网络代理与隧道协议</a><time datetime="2025-04-07T11:03:42.000Z" title="发表于 2025-04-07 19:03:42">2025-04-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/d589e11c.html" title="文件后缀"><img src="https://img.dexbug.com/i/2025/04/07/jxhw34.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文件后缀"/></a><div class="content"><a class="title" href="/undefined/d589e11c.html" title="文件后缀">文件后缀</a><time datetime="2025-04-07T04:01:13.000Z" title="发表于 2025-04-07 12:01:13">2025-04-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/6b9d3397.html" title="每日生活"><img src="/./img/siteicon/%E7%94%9F%E6%B4%BB.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日生活"/></a><div class="content"><a class="title" href="/undefined/6b9d3397.html" title="每日生活">每日生活</a><time datetime="2025-04-06T09:47:30.000Z" title="发表于 2025-04-06 17:47:30">2025-04-06</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://img.dexbug.com/i/2025/04/08/j5najo.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By kewua</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="1853321957" data-server="kugou" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrcType="-1"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 1rem;font-size: 15px;height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨ 有新文章啦！ 👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍗点击食用🍔</span></a></div></div><script>if ('serviceWorker' in navigator) {
+    if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.addEventListener('controllerchange', function() {
+            showNotification()
+        })
+    }
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+    })
+}
+function showNotification() {
+    if (GLOBAL_CONFIG.Snackbar) {
+        var snackbarBg =
+            document.documentElement.getAttribute('data-theme') === 'light' ?
+                GLOBAL_CONFIG.Snackbar.bgLight :
+                GLOBAL_CONFIG.Snackbar.bgDark
+        var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+        Snackbar.show({
+            text: '✨ 有新文章啦！ 👉',
+            backgroundColor: snackbarBg,
+            duration: 500000,
+            pos: snackbarPos,
+            actionText: '🍗点击食用🍔',
+            actionTextColor: '#fff',
+            onActionClick: function(e) {
+                location.reload()
+            },
+        })
+    } else {
+        var showBg =
+            document.documentElement.getAttribute('data-theme') === 'light' ?
+                '#3b70fc' :
+                '#1f1f1f'
+        var cssText = `top: 0; background: ${showBg};`
+        document.getElementById('app-refresh').style.cssText = cssText
+    }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索………" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '396f19c15dd348de98faab3cf0910f63';
+  var gaud_map_key = '2db81e664c922ad111a81723bde07485';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '116.37273200,23.55096800';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" style="margin-inline:5px" data-title="本站已在粤进行备案" title=""><img src="https://img.shields.io/badge/粤ICP备-2025004213号-e1d492?style=flat&amp;logo=data:image/png;base64,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" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/Guonandu/Guonandu.github.io" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.2s');
+    arr[i].setAttribute('data-wow-delay', '1ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-koharu"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
