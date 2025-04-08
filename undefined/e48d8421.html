@@ -1,0 +1,490 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>关联一切：主板 | kewua's Blog</title><meta name="author" content="kewua"><meta name="copyright" content="kewua"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="解密计算机的心脏：主板全解析当我们谈论组装一台计算机或了解其内部工作原理时，“主板”（Motherboard）是一个无法绕开的核心组件。它就像人体的躯干和神经系统，连接着所有关键器官，并确保它们协同工作。这篇博客文章将带你深入了解主板的世界，从它的历史、构造、作用到如何解读那些令人眼花缭乱的品牌和型号。 什么是主板？主板，也称为主机板（Mainboard）、系统板（System Board）或逻辑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关联一切：主板">
+<meta property="og:url" content="https://guonandu.github.io/undefined/e48d8421.html">
+<meta property="og:site_name" content="kewua&#39;s Blog">
+<meta property="og:description" content="解密计算机的心脏：主板全解析当我们谈论组装一台计算机或了解其内部工作原理时，“主板”（Motherboard）是一个无法绕开的核心组件。它就像人体的躯干和神经系统，连接着所有关键器官，并确保它们协同工作。这篇博客文章将带你深入了解主板的世界，从它的历史、构造、作用到如何解读那些令人眼花缭乱的品牌和型号。 什么是主板？主板，也称为主机板（Mainboard）、系统板（System Board）或逻辑">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.dexbug.com/i/2025/04/08/xs2te2.jpg">
+<meta property="article:published_time" content="2025-04-08T12:31:34.000Z">
+<meta property="article:modified_time" content="2025-04-08T12:42:35.886Z">
+<meta property="article:author" content="kewua">
+<meta property="article:tag" content="一会就睡觉">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.dexbug.com/i/2025/04/08/xs2te2.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "关联一切：主板",
+  "url": "https://guonandu.github.io/undefined/e48d8421.html",
+  "image": "https://img.dexbug.com/i/2025/04/08/xs2te2.jpg",
+  "datePublished": "2025-04-08T12:31:34.000Z",
+  "dateModified": "2025-04-08T12:42:35.886Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "kewua",
+      "url": "https://guonandu.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/siteicon/gnd.jpg"><link rel="canonical" href="https://guonandu.github.io/undefined/e48d8421.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#3b70fc"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/128.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="mask-icon" href="/img/siteicon/128.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":3,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '关联一切：主板',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="kewua's Blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(https://img.dexbug.com/i/2025/04/06/tupleo.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/siteicon/gnd.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/music/"><i class="fa-fw fas fa-music faa-tada"></i><span> 音乐馆</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/fcircle/"><i class="fa-fw fab fa-artstation faa-tada"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dongman"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-guanyu_o"></use></svg><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.dexbug.com/i/2025/04/08/xs2te2.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">kewua's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">关联一切：主板</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/music/"><i class="fa-fw fas fa-music faa-tada"></i><span> 音乐馆</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/fcircle/"><i class="fa-fw fab fa-artstation faa-tada"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dongman"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-guanyu_o"></use></svg><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">关联一切：主板</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-08T12:31:34.000Z" title="发表于 2025-04-08 20:31:34">2025-04-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-08T12:42:35.886Z" title="更新于 2025-04-08 20:42:35">2025-04-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="解密计算机的心脏：主板全解析"><a href="#解密计算机的心脏：主板全解析" class="headerlink" title="解密计算机的心脏：主板全解析"></a>解密计算机的心脏：主板全解析</h1><p>当我们谈论组装一台计算机或了解其内部工作原理时，“主板”（Motherboard）是一个无法绕开的核心组件。它就像人体的躯干和神经系统，连接着所有关键器官，并确保它们协同工作。这篇博客文章将带你深入了解主板的世界，从它的历史、构造、作用到如何解读那些令人眼花缭乱的品牌和型号。</p>
+<h2 id="什么是主板？"><a href="#什么是主板？" class="headerlink" title="什么是主板？"></a>什么是主板？</h2><p>主板，也称为主机板（Mainboard）、系统板（System Board）或逻辑板（Logic Board），是一块大型的印刷电路板（PCB）。它是计算机的核心枢纽，几乎所有其他内部组件——如中央处理器（CPU）、内存（RAM）、显卡（GPU）、存储设备（硬盘、SSD）等——都需要直接或间接地连接到主板上，并通过它进行数据交换和电力传输。</p>
+<h2 id="主板简史：从分散到集成"><a href="#主板简史：从分散到集成" class="headerlink" title="主板简史：从分散到集成"></a>主板简史：从分散到集成</h2><p>早期计算机的组件是分散在多个电路板上的。直到 1981 年 IBM PC 的出现，才有了现代意义上“主板”的雏形，它将许多核心功能集成到一块板上。随后的 IBM AT (Advanced Technology) 主板及其定义的 AT 尺寸规格，进一步奠定了行业标准。</p>
+<p>随着技术的发展，越来越多的功能被集成到主板上：</p>
+<ul>
+<li><strong>早期：</strong> 只有 CPU 插槽、内存插槽和一些扩展槽。声卡、网卡、显卡等都需要通过扩展卡添加。</li>
+<li><strong>发展期：</strong> 芯片组（Chipset）出现，集成了更多控制器（如磁盘控制器）。板载（Onboard）声卡、网卡开始普及。</li>
+<li><strong>现代：</strong> 高度集成化。除了基本的 CPU、RAM 支持外，现代主板通常集成了高性能声卡、高速有线甚至无线网络（Wi-Fi）、多个 USB 接口、视频输出接口（依赖于 CPU 是否有核显），以及用于高速 SSD 的 M.2 接口等。</li>
+</ul>
+<h2 id="主板的构造：认识关键部件"><a href="#主板的构造：认识关键部件" class="headerlink" title="主板的构造：认识关键部件"></a>主板的构造：认识关键部件</h2><p>一块现代主板布满了各种插槽、接口、芯片和电子元件。以下是一些关键部分：</p>
+<ol>
+<li><strong>CPU 插座 (CPU Socket):</strong> 这是安装 CPU 的地方。不同品牌（<span class='p blue'>Intel</span>/<span class='p red'>AMD</span>）和不同代的 CPU 使用不同的插座类型（如 <kbd>LGA 1700</kbd>, <kbd>AM5</kbd>），互不兼容。</li>
+<li><strong>内存插槽 (RAM Slots):</strong> 用于安装内存条（DIMM）。通常有 2 或 4 个插槽，支持特定类型的内存（如 DDR4, DDR5）和最大容量。</li>
+<li><strong>芯片组 (Chipset):</strong> 这是主板的“大脑”，一组协同工作的芯片，负责 CPU 与其他部件（内存、PCIe 设备、USB、SATA 等）之间的通信。现代主板通常只有一个主要芯片（如 <span class='p blue'>Intel</span> 的 <kbd>Z790</kbd>, <kbd>B760</kbd> 或 <span class='p red'>AMD</span> 的 <kbd>X670</kbd>, <kbd>B650</kbd>）。芯片组决定了主板的许多功能和规格，如超频支持、PCIe 通道数量、USB 接口数量和速度等。</li>
+<li><strong>扩展槽 (Expansion Slots):</strong> 主要指 PCIe (Peripheral Component Interconnect Express) 插槽，用于安装独立显卡、声卡、网卡、M.2 扩展卡等。有不同的大小和速度规格（如 PCIe x16, x4, x1）。</li>
+<li><strong>存储接口 (Storage Connectors):</strong><ul>
+<li>SATA (Serial ATA): 用于连接传统的 2.5 英寸/3.5 英寸 SSD 或 HDD。</li>
+<li>M.2 插槽: 用于安装高速 NVMe SSD，直接连接 CPU 或芯片组，速度远超 SATA。</li>
+</ul>
+</li>
+<li><strong>电源接口 (Power Connectors):</strong><ul>
+<li>ATX 24-pin: 主供电接口。</li>
+<li>CPU 8-pin (或 4+4 pin, 甚至 8+8 pin): 为 CPU 提供独立、稳定的供电。</li>
+</ul>
+</li>
+<li><strong>背板 I/O 接口 (Rear I/O Panel):</strong> 主板边缘的一排接口，用于连接外部设备，通常包括 USB、网络（RJ-45）、音频、视频输出（HDMI, DisplayPort - 需 CPU 核显）、Wi-Fi/蓝牙天线接口等。</li>
+<li><strong>内部跳线和接口 (Internal Headers):</strong> 用于连接机箱前面板的 USB、音频、电源按钮、LED 指示灯以及机箱风扇等。</li>
+<li><strong>BIOS/UEFI 芯片:</strong> 存储着主板的基本输入/输出系统 (BIOS) 或更现代的统一可扩展固件接口 (UEFI)。这是计算机启动时运行的第一个软件。</li>
+<li><strong>CMOS 电池:</strong> 一个小电池，用于在断电时保存 BIOS/UEFI 设置。</li>
+<li><strong>VRM (Voltage Regulator Module):</strong> 供电模块，负责为 CPU 和内存提供精确稳定的电压，对超频和稳定性很重要。</li>
+<li><strong>RGB 灯效接口 (RGB Headers):</strong> 现代主板常配备用于连接 RGB 灯光设备的接口。<ul>
+<li><strong>12V 4-Pin RGB Header:</strong> 用于标准 RGB 设备。</li>
+<li><strong>5V 3-Pin ARGB Header (Addressable RGB):</strong> 用于可独立控制灯珠的 ARGB 设备，效果更丰富。</li>
+<li><div class="tip warning"><p><emp>注意</emp>: <kbd>12V</kbd> 和 <kbd>5V</kbd> 的接口 <u>绝对不能</u> 混插！否则可能损坏设备。连接前务必确认规格。灯效通常通过主板厂商软件控制。 </p>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="主板的作用：连接与沟通的桥梁"><a href="#主板的作用：连接与沟通的桥梁" class="headerlink" title="主板的作用：连接与沟通的桥梁"></a>主板的作用：连接与沟通的桥梁</h2><p>主板的核心作用可以概括为：</p>
+<ul>
+<li><strong>连接平台:</strong> 提供物理接口连接所有硬件。</li>
+<li><strong>电力分配:</strong> 将电源的电力分配给各组件。</li>
+<li><strong>数据通道:</strong> 建立各组件间的数据传输路径。</li>
+<li><strong>系统管理:</strong> 通过 BIOS/UEFI 提供基础硬件管理和启动。</li>
+</ul>
+<p>没有主板，计算机就是一堆无法协同工作的零散部件。</p>
+<h2 id="主板的功能特性：差异所在"><a href="#主板的功能特性：差异所在" class="headerlink" title="主板的功能特性：差异所在"></a>主板的功能特性：差异所在</h2><p>不同的主板在功能和特性上差异很大，这些差异决定了它的定位和价格：</p>
+<ul>
+<li><strong>尺寸规格 (Form Factor):</strong> 如 ATX (标准)、Micro-ATX (紧凑)、Mini-ITX (迷你)，决定了大小和扩展性。</li>
+<li><strong>芯片组级别:</strong> 如 <span class='p blue'>Intel</span> 的 <kbd>Z</kbd> 系列 (支持超频) 或 <span class='p red'>AMD</span> 的 <kbd>X</kbd> 系列 (高端)，与 <kbd>B</kbd> 系列 (主流) 或 <kbd>H/A</kbd> 系列 (入门) 功能不同。</li>
+<li><strong>内存支持:</strong> 支持的内存类型 (DDR4/DDR5)、最高频率和最大容量。</li>
+<li><strong>扩展性:</strong> PCIe 插槽、M.2 插槽、SATA 接口的数量和速度。</li>
+<li><strong>网络连接:</strong> 有线网卡速度 (如 1Gbps, 2.5Gbps)，是否集成 Wi-Fi (如 Wi-Fi 6/6E/7)。</li>
+<li><strong>音频质量:</strong> 板载声卡的芯片型号和电路设计。</li>
+<li><strong>供电设计 (VRM):</strong> 影响 CPU 性能释放和超频潜力。</li>
+<li><strong>附加功能:</strong> 如 RGB 灯效、Debug 指示灯、BIOS Flashback 等。</li>
+</ul>
+<h2 id="解读品牌与型号：参数的含义"><a href="#解读品牌与型号：参数的含义" class="headerlink" title="解读品牌与型号：参数的含义"></a>解读品牌与型号：参数的含义</h2><p>选择主板时，你会遇到众多品牌和复杂的型号名称。</p>
+<p><strong>知名主板品牌:</strong></p>
+<ul>
+<li><span class='p blue'>华硕</span> (ASUS): 如 ROG (高端电竞), TUF GAMING (主流), PRIME (入门)。</li>
+<li><span class='p green'>技嘉</span> (Gigabyte): 如 AORUS (高端电竞)。</li>
+<li><span class='p cyan'>微星</span> (MSI): 如 MEG/MPG/MAG (游戏), PRO (商用/创作)。</li>
+<li><span class='p gray'>华擎</span> (ASRock): 以性价比著称，如 Taichi (高端), Phantom Gaming (电竞)。</li>
+</ul>
+<p><strong>型号命名解读:</strong></p>
+<p>一个典型的主板型号通常包含 <strong>品牌 + 芯片组 + 系列/后缀</strong>。</p>
+<ul>
+<li><strong>芯片组 (核心):</strong> 如 <kbd>Z790</kbd>, <kbd>B650</kbd>, <kbd>X670E</kbd>，直接表明核心规格。<ul>
+<li><span class='p blue'>Intel</span> 芯片组: <kbd>Z</kbd> (超频), <kbd>H</kbd> (高端), <kbd>B</kbd> (主流), <kbd>H</kbd> (入门)。</li>
+<li><span class='p red'>AMD</span> 芯片组: <kbd>X</kbd> (旗舰, <kbd>E</kbd> 后缀代表极致扩展), <kbd>B</kbd> (主流), <kbd>A</kbd> (入门)。</li>
+</ul>
+</li>
+<li><strong>系列/后缀 (厂商定义):</strong> 用于区分定位和特性。<ul>
+<li>例如 <code>ASUS ROG STRIX Z790-E GAMING WIFI II</code>: <code>ROG STRIX</code> 是高端电竞系列, <code>Z790</code> 是芯片组, <code>-E</code> 通常代表功能较全, <code>WIFI</code> 代表集成无线网卡, <code>II</code> 是版本号。</li>
+<li>例如 <code>Gigabyte B650 AORUS ELITE AX</code>: <code>B650</code> 是芯片组, <code>AORUS ELITE</code> 是中高端系列, <code>AX</code> 通常指支持 Wi-Fi 6/6E。</li>
+<li>例如 <code>MSI MPG B650 CARBON WIFI</code>: <code>MPG</code> 是性能级游戏系列, <code>CARBON</code> 是特定设计风格。</li>
+<li>例如 <code>ASRock B650M PG Riptide</code>: <code>M</code> 通常指 Micro-ATX 尺寸。</li>
+</ul>
+</li>
+</ul>
+<p><strong>常见的后缀含义:</strong></p>
+<ul>
+<li><code>E</code>: Extreme / Enhanced / Elite (高端/增强)</li>
+<li><code>F</code>: Formula / Gaming (游戏)</li>
+<li><code>I / ITX</code>: Mini-ITX 尺寸</li>
+<li><code>M / mATX</code>: Micro-ATX 尺寸</li>
+<li><code>Pro</code>: 专业版 / 增强版</li>
+<li><code>Plus / +</code>: 增强版</li>
+<li><code>Wi-Fi / AX / Wireless</code>: 集成无线网卡</li>
+<li><code>Creator / ACE</code>: 创作者导向</li>
+<li><code>Hero / Master / Godlike / Taichi</code>: 各品牌旗舰系列名称</li>
+</ul>
+<h2 id="如何选择合适的主板？"><a href="#如何选择合适的主板？" class="headerlink" title="如何选择合适的主板？ ()"></a>如何选择合适的主板？ (<span class='p yellow'>详细注意事项</span>)</h2><p>选择主板是攒机过程中至关重要的一步，需要综合考虑多个因素：</p>
+<ol>
+<li><p><strong>CPU 兼容性 (<span class='p red'>emp</span>):</strong></p>
+<ul>
+<li><strong>插槽 (Socket):</strong> <u>必须</u>与 CPU 匹配 (如 <kbd>LGA 1700</kbd>, <kbd>AM5</kbd>)。</li>
+<li><strong>芯片组 (Chipset):</strong> 确保芯片组支持你的 CPU 型号。<span class='p green'>务必查阅主板官网的 CPU 支持列表</span>。</li>
+<li><strong>超频需求:</strong> 如需超频，选择支持的芯片组 (如 <kbd>Z</kbd>, <kbd>X</kbd>, <kbd>B</kbd> 系列)。</li>
+</ul>
+</li>
+<li><p><strong>内存支持 (RAM):</strong></p>
+<ul>
+<li>确认主板支持的内存类型 (DDR4/DDR5)、最高频率和最大容量。</li>
+</ul>
+</li>
+<li><p><strong>尺寸规格 (Form Factor):</strong></p>
+<ul>
+<li>选择适合机箱的尺寸 (ATX, mATX, ITX 等)。</li>
+<li><div class="tip warning"><p><u>确保所选主板能装入你的机箱！</u> </p>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>扩展插槽 (PCIe):</strong></p>
+<ul>
+<li>确认显卡插槽 (PCIe x16) 的版本和数量。</li>
+<li>考虑是否需要其他 PCIe 插槽 (x1, x4)。</li>
+</ul>
+</li>
+<li><p><strong>存储接口 (M.2 &amp; SATA):</strong></p>
+<ul>
+<li>确认 M.2 插槽的数量、速度和是否自带散热片。</li>
+<li>确认 SATA 接口数量是否足够。</li>
+</ul>
+</li>
+<li><p><strong>背板 I/O 接口:</strong></p>
+<ul>
+<li>检查 USB 接口的数量、类型和速度。</li>
+<li>检查网络接口（有线速度、是否需要 Wi-Fi）。</li>
+<li>检查音频接口。</li>
+<li>如使用核显，检查视频输出接口。</li>
+</ul>
+</li>
+<li><p><strong>内部接口与跳线:</strong></p>
+<ul>
+<li>确保有足够的风扇接口。</li>
+<li>检查前置 USB 接口 (包括 Type-C 接针，如果需要)。</li>
+<li>确认是否有需要的 RGB 接口 (<kbd>12V</kbd> / <kbd>5V</kbd>)。</li>
+</ul>
+</li>
+<li><p><strong>供电设计 (VRM):</strong></p>
+<ul>
+<li>对高性能 CPU 或超频用户很重要，关注供电相数和散热。查阅评测获取信息。</li>
+</ul>
+</li>
+<li><p><strong>品牌、BIOS/UEFI 和软件:</strong></p>
+<ul>
+<li>考虑 BIOS/UEFI 的易用性、品牌售后和软件生态。</li>
+</ul>
+</li>
+<li><p><strong>预算:</strong></p>
+<ul>
+<li>在预算内平衡功能需求，不必为用不到的功能付费，但<wavy>不要在关键部分过于节省</wavy>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Guonandu.github.io">kewua</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://guonandu.github.io/undefined/e48d8421.html">https://guonandu.github.io/undefined/e48d8421.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://Guonandu.github.io" target="_blank">kewua's Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://img.dexbug.com/i/2025/04/08/xs2te2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/undefined/2b2eba78.html" title="并行王者：GPU"><img class="cover" src="https://img.dexbug.com/i/2025/04/08/j5najo.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">并行王者：GPU</div></div><div class="info-2"><div class="info-item-1">解密GPU：从CPU的“小弟”到并行计算的“王者”引言：无处不在的GPU 如今，无论你是狂热的游戏玩家、专业的内容创作者，还是前沿的人工智能研究者，你都离不开一个核心硬件——GPU（图形处理器，Graphics Processing Unit）。它从最初只是为了让电脑屏幕显示图像，发展到今天驱动着最复杂的计算任务。但这项强大的“武器”是如何诞生的？ 它的内部构造有何奥秘？那些我们耳熟能详的品牌名称（如GeForce、Radeon）又代表着什么？它又是如何一步步进化到今天的形态？这篇博客将带你深入浅出地了解GPU的世界。 一、 GPU的起源：CPU不堪重负的“图形任务”在个人电脑发展的早期，所有的计算任务，包括图形显示，都由CPU（中央处理器，Central Processing Unit）一肩挑。CPU的设计哲学是...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/siteicon/gnd.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">kewua</div><div class="author-info-description">一个抑郁的人</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Guonandu/Guonandu.github.io"><i class="fab fa-github"></i><span>访问（源码）</span></a><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://t.me/kewuaaaa" target="_blank" title="telegram"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-telegram"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://github.com/Guonandu" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-github"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://discord.com/invite/mf8XBFc3" target="_blank" title="discord"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-discord"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.instagram.com/guonandu2?igsh=MXV1YTcxMTZvd2FoOA==" target="_blank" title="insgram"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-Insgram"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://x.com/GuoNandu" target="_blank" title="X"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-tuite"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://img.dexbug.com/i/2025/04/06/yuk5n6.jpg" target="_blank" title="weixin"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-weixin"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/499301507?spm_id_from=333.1007.0.0" target="_blank" title="BiliBili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a><a class="social-icon faa-parent animated-hover" href="tencent://Message/?Uin=2268025923&amp;amp;websiteName=local.edu.com:8888=&amp;amp;Menu=yes" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shejiaotubiao-39"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">期待更新</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%AF%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E5%BF%83%E8%84%8F%EF%BC%9A%E4%B8%BB%E6%9D%BF%E5%85%A8%E8%A7%A3%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">解密计算机的心脏：主板全解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%BB%E6%9D%BF%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">什么是主板？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9D%BF%E7%AE%80%E5%8F%B2%EF%BC%9A%E4%BB%8E%E5%88%86%E6%95%A3%E5%88%B0%E9%9B%86%E6%88%90"><span class="toc-number">1.2.</span> <span class="toc-text">主板简史：从分散到集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9D%BF%E7%9A%84%E6%9E%84%E9%80%A0%EF%BC%9A%E8%AE%A4%E8%AF%86%E5%85%B3%E9%94%AE%E9%83%A8%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">主板的构造：认识关键部件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9D%BF%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9A%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%B2%9F%E9%80%9A%E7%9A%84%E6%A1%A5%E6%A2%81"><span class="toc-number">1.4.</span> <span class="toc-text">主板的作用：连接与沟通的桥梁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9D%BF%E7%9A%84%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7%EF%BC%9A%E5%B7%AE%E5%BC%82%E6%89%80%E5%9C%A8"><span class="toc-number">1.5.</span> <span class="toc-text">主板的功能特性：差异所在</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E8%AF%BB%E5%93%81%E7%89%8C%E4%B8%8E%E5%9E%8B%E5%8F%B7%EF%BC%9A%E5%8F%82%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">1.6.</span> <span class="toc-text">解读品牌与型号：参数的含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E4%B8%BB%E6%9D%BF%EF%BC%9F"><span class="toc-number">1.7.</span> <span class="toc-text">如何选择合适的主板？ (详细注意事项)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">1.8.</span> <span class="toc-text">结语</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/undefined/e48d8421.html" title="关联一切：主板"><img src="https://img.dexbug.com/i/2025/04/08/xs2te2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关联一切：主板"/></a><div class="content"><a class="title" href="/undefined/e48d8421.html" title="关联一切：主板">关联一切：主板</a><time datetime="2025-04-08T12:31:34.000Z" title="发表于 2025-04-08 20:31:34">2025-04-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/2b2eba78.html" title="并行王者：GPU"><img src="https://img.dexbug.com/i/2025/04/08/j5najo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="并行王者：GPU"/></a><div class="content"><a class="title" href="/undefined/2b2eba78.html" title="并行王者：GPU">并行王者：GPU</a><time datetime="2025-04-08T03:01:13.000Z" title="发表于 2025-04-08 11:01:13">2025-04-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/c0a411bf.html" title="深入解析CPU"><img src="https://img.dexbug.com/i/2025/04/07/xo922d.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入解析CPU"/></a><div class="content"><a class="title" href="/undefined/c0a411bf.html" title="深入解析CPU">深入解析CPU</a><time datetime="2025-04-07T12:25:33.000Z" title="发表于 2025-04-07 20:25:33">2025-04-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/85b7cc76.html" title="现代网络代理与隧道协议"><img src="https://img.dexbug.com/i/2025/04/07/vnrb67.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="现代网络代理与隧道协议"/></a><div class="content"><a class="title" href="/undefined/85b7cc76.html" title="现代网络代理与隧道协议">现代网络代理与隧道协议</a><time datetime="2025-04-07T11:03:42.000Z" title="发表于 2025-04-07 19:03:42">2025-04-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/d589e11c.html" title="文件后缀"><img src="https://img.dexbug.com/i/2025/04/07/jxhw34.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文件后缀"/></a><div class="content"><a class="title" href="/undefined/d589e11c.html" title="文件后缀">文件后缀</a><time datetime="2025-04-07T04:01:13.000Z" title="发表于 2025-04-07 12:01:13">2025-04-07</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://img.dexbug.com/i/2025/04/08/xs2te2.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By kewua</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="1853321957" data-server="kugou" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrcType="-1"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 1rem;font-size: 15px;height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨ 有新文章啦！ 👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍗点击食用🍔</span></a></div></div><script>if ('serviceWorker' in navigator) {
+    if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.addEventListener('controllerchange', function() {
+            showNotification()
+        })
+    }
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+    })
+}
+function showNotification() {
+    if (GLOBAL_CONFIG.Snackbar) {
+        var snackbarBg =
+            document.documentElement.getAttribute('data-theme') === 'light' ?
+                GLOBAL_CONFIG.Snackbar.bgLight :
+                GLOBAL_CONFIG.Snackbar.bgDark
+        var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+        Snackbar.show({
+            text: '✨ 有新文章啦！ 👉',
+            backgroundColor: snackbarBg,
+            duration: 500000,
+            pos: snackbarPos,
+            actionText: '🍗点击食用🍔',
+            actionTextColor: '#fff',
+            onActionClick: function(e) {
+                location.reload()
+            },
+        })
+    } else {
+        var showBg =
+            document.documentElement.getAttribute('data-theme') === 'light' ?
+                '#3b70fc' :
+                '#1f1f1f'
+        var cssText = `top: 0; background: ${showBg};`
+        document.getElementById('app-refresh').style.cssText = cssText
+    }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索………" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '396f19c15dd348de98faab3cf0910f63';
+  var gaud_map_key = '2db81e664c922ad111a81723bde07485';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '116.37273200,23.55096800';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" style="margin-inline:5px" data-title="本站已在粤进行备案" title=""><img src="https://img.shields.io/badge/粤ICP备-2025004213号-e1d492?style=flat&amp;logo=data:image/png;base64,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" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/Guonandu/Guonandu.github.io" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.2s');
+    arr[i].setAttribute('data-wow-delay', '1ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-koharu"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
