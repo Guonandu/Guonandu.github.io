@@ -1,0 +1,445 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>短期记忆:内存条 | kewua's Blog</title><meta name="author" content="kewua"><meta name="copyright" content="kewua"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="探索内存的世界 理解计算机的“短期记忆” 今天我们来聊聊电脑中一个至关重要但又常常被忽视的组件——内存条（RAM）。无论你是组装新电脑、升级旧电脑，还是仅仅想了解电脑的工作原理，理解内存都非常有帮助。 什么是内存（RAM）？内存，全称随机存取存储器（Random Access Memory），是计算机的“工作台”或“短期记忆”。当你运行程序或打开文件时，CPU（中央处理器）需要快速访问这些数据。硬">
+<meta property="og:type" content="article">
+<meta property="og:title" content="短期记忆:内存条">
+<meta property="og:url" content="https://guonandu.github.io/undefined/a8cf393e.html">
+<meta property="og:site_name" content="kewua&#39;s Blog">
+<meta property="og:description" content="探索内存的世界 理解计算机的“短期记忆” 今天我们来聊聊电脑中一个至关重要但又常常被忽视的组件——内存条（RAM）。无论你是组装新电脑、升级旧电脑，还是仅仅想了解电脑的工作原理，理解内存都非常有帮助。 什么是内存（RAM）？内存，全称随机存取存储器（Random Access Memory），是计算机的“工作台”或“短期记忆”。当你运行程序或打开文件时，CPU（中央处理器）需要快速访问这些数据。硬">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.dexbug.com/i/2025/04/10/nkfrfu.jpg">
+<meta property="article:published_time" content="2025-04-10T05:43:49.000Z">
+<meta property="article:modified_time" content="2025-04-10T06:24:43.126Z">
+<meta property="article:author" content="kewua">
+<meta property="article:tag" content="一会就睡觉">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.dexbug.com/i/2025/04/10/nkfrfu.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "短期记忆:内存条",
+  "url": "https://guonandu.github.io/undefined/a8cf393e.html",
+  "image": "https://img.dexbug.com/i/2025/04/10/nkfrfu.jpg",
+  "datePublished": "2025-04-10T05:43:49.000Z",
+  "dateModified": "2025-04-10T06:24:43.126Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "kewua",
+      "url": "https://guonandu.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/siteicon/gnd.jpg"><link rel="canonical" href="https://guonandu.github.io/undefined/a8cf393e.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#3b70fc"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/128.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="mask-icon" href="/img/siteicon/128.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":3,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '短期记忆:内存条',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="kewua's Blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(https://img.dexbug.com/i/2025/04/06/tupleo.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/siteicon/gnd.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/music/"><i class="fa-fw fas fa-music faa-tada"></i><span> 音乐馆</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/fcircle/"><i class="fa-fw fab fa-artstation faa-tada"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dongman"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-guanyu_o"></use></svg><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.dexbug.com/i/2025/04/10/nkfrfu.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">kewua's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">短期记忆:内存条</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/music/"><i class="fa-fw fas fa-music faa-tada"></i><span> 音乐馆</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/fcircle/"><i class="fa-fw fab fa-artstation faa-tada"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-dongman"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-guanyu_o"></use></svg><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">短期记忆:内存条</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-10T05:43:49.000Z" title="发表于 2025-04-10 13:43:49">2025-04-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-10T06:24:43.126Z" title="更新于 2025-04-10 14:24:43">2025-04-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><span class='p center logo large'>探索内存的世界</span>
+<span class='p center small'>理解计算机的“短期记忆”</span>
+<p>今天我们来聊聊电脑中一个至关重要但又常常被忽视的组件——<u>内存条</u>（RAM）。无论你是组装新电脑、升级旧电脑，还是仅仅想了解电脑的工作原理，理解内存都非常有帮助。</p>
+<h2 id="什么是内存（RAM）？"><a href="#什么是内存（RAM）？" class="headerlink" title="什么是内存（RAM）？"></a>什么是内存（RAM）？</h2><p>内存，全称<emp>随机存取存储器</emp>（Random Access Memory），是计算机的“<wavy>工作台</wavy>”或“<u>短期记忆</u>”。当你运行程序或打开文件时，CPU（中央处理器）需要快速访问这些数据。硬盘或固态硬盘（SSD）虽然容量大，但读写速度相对较慢。因此，计算机会将当前需要处理的数据从硬盘加载到内存中，CPU 再直接与内存高速交互。</p>
+<p>内存的关键特性是 <span class='p red'>易失性</span>，意味着一旦断电，存储在内存中的所有数据都会丢失。这与硬盘/SSD 等<u>永久性存储</u>不同。</p>
+<h2 id="内存的发展简史"><a href="#内存的发展简史" class="headerlink" title="内存的发展简史"></a>内存的发展简史</h2><p>内存技术经历了漫长的发展：</p>
+<ol>
+<li><strong>早期形态</strong>: 从打孔卡、磁鼓内存到 <kbd>磁芯存储器</kbd>。</li>
+<li><strong>DRAM 的诞生</strong>: 1968 年，罗伯特·登纳德发明了动态随机存取存储器 (DRAM)，奠定了现代内存的基础。</li>
+<li><strong>SDRAM 时代</strong>: <span class='p gray'>同步动态随机存取存储器</span> (Synchronous DRAM) 使内存时钟与 CPU 外频同步，提高了效率。</li>
+<li><strong>DDR 的崛起</strong>:<ul>
+<li><span class='p blue'>DDR SDRAM</span> (Double Data Rate): 在一个时钟周期内传输两次数据，带宽翻倍。</li>
+<li><span class='p blue'>DDR2</span>: 更高的频率，更低的功耗。</li>
+<li><span class='p blue'>DDR3</span>: 频率进一步提升，电压降低。这是很长一段时间的主流。</li>
+<li><span class='p cyan'>DDR4</span>: 目前市场的主流，提供更高的频率、更大的容量和更低的电压。</li>
+<li><span class='p green'>DDR5</span>: 最新一代内存标准，频率和带宽大幅提升，单条容量更大，并引入了新的电源管理和纠错机制。 <wavy>DDR5 是未来的趋势</wavy>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="内存条的构造"><a href="#内存条的构造" class="headerlink" title="内存条的构造"></a>内存条的构造</h2><p>一根内存条主要由以下几个部分组成：</p>
+<ul>
+<li><strong>PCB (Printed Circuit Board)</strong>: 印刷电路板，是所有元件的基础。</li>
+<li><strong>内存颗粒 (Memory Chips/ICs)</strong>: <emp>核心部分</emp>，实际存储数据的芯片。这些颗粒由三星、海力士、美光等少数几家制造商生产。</li>
+<li><strong>SPD 芯片 (Serial Presence Detect)</strong>: 存储内存条的规格信息，如容量、速度、时序等。电脑启动时会读取这些信息。 <psw>这就像内存的身份证</psw>。</li>
+<li><strong>金手指 (Golden Fingers)</strong>: 位于内存条底部的金色接触点，用于插入主板内存插槽并传输数据。</li>
+</ul>
+<details class="folding-tag" yellow><summary> 散热片（可选） </summary>
+              <div class='content'>
+              <p>很多高性能内存条会覆盖金属散热片（马甲），主要作用是辅助内存颗粒散热，在高频工作时保持稳定。同时，散热片也增加了 <span class='p green'>美观度</span>，并常常带有 RGB 灯效。</p>
+              </div>
+            </details>
+<h2 id="内存的关键参数解读"><a href="#内存的关键参数解读" class="headerlink" title="内存的关键参数解读"></a>内存的关键参数解读</h2><p>在内存条的标签或规格表上，你会看到类似 <kbd>DDR4 3200MHz 16GB CL16</kbd> 这样的描述。它们是什么意思呢？</p>
+<ol>
+<li><strong>类型 (Type)</strong>: 如 <span class='p blue'>DDR3</span>, <span class='p cyan'>DDR4</span>, <span class='p green'>DDR5</span>。不同类型互不兼容，主板支持哪种就必须用哪种。</li>
+<li><strong>频率 (Frequency/Speed)</strong>: 单位是 MHz（兆赫兹）或 MT/s（每秒兆传输）。如 <kbd>3200MHz</kbd> 或 <kbd>6000MT/s</kbd>。<u>频率越高，理论上数据传输速度越快</u>。DDR 的实际工作频率是标称频率的一半，但由于它在一个时钟周期传输两次数据，所以我们通常直接看标称频率（等效频率）。</li>
+<li><strong>容量 (Capacity)</strong>: 单位是 GB（吉字节）。如 <span class='p gray'>8GB</span>, <span class='p green'>16GB</span>, <span class='p yellow'>32GB</span>。表示内存条能同时容纳多少数据。总容量通常是单条容量乘以条数。</li>
+<li><strong>时序 (Timing/Latency)</strong>: 通常表示为一串数字，如 <kbd>16-18-18-38</kbd>。第一个数字 <emp>CL (CAS Latency)</emp> 是最重要的参数，表示 <u>列地址选通延迟</u>。<span class='p red'>CL 值越低，内存响应越快</span>。在相同频率下，低 CL 值更好。但需要注意，<wavy>不同频率下的 CL 值不能直接比较绝对延迟</wavy>。真实延迟约等于 <code>(CL / (频率/2)) * 1000</code> 纳秒。</li>
+<li><strong>通道 (Channels)</strong>: 如 <kbd>双通道</kbd> (Dual Channel), <kbd>四通道</kbd> (Quad Channel)。通过在主板上安装两条或四条内存，可以使内存带宽加倍，提升性能。需要将内存插在主板指定的插槽中（通常颜色相同或有标记）。<div class="tip warning"><p>强烈建议购买套条（如 2x8GB, 2x16GB）以确保兼容性和性能，并启用双通道。</p>
+</div></li>
+</ol>
+<h2 id="常见内存品牌"><a href="#常见内存品牌" class="headerlink" title="常见内存品牌"></a>常见内存品牌</h2><p>市面上有许多内存品牌，一些比较知名的有：</p>
+<ul>
+<li><span class='p logo'>Corsair</span> (海盗船)</li>
+<li><span class='p logo'>G.Skill</span> (芝奇)</li>
+<li><span class='p logo'>Kingston</span> (金士顿 - 其高端系列为 HyperX/Fury)</li>
+<li><span class='p logo'>Crucial</span> (英睿达 - 美光子公司)</li>
+<li><span class='p logo'>Samsung</span> (三星)</li>
+<li><span class='p logo'>SK Hynix</span> (海力士)</li>
+<li><span class='p logo'>ADATA</span> (威刚)</li>
+<li><span class='p logo'>TeamGroup</span> (十铨)</li>
+</ul>
+<p class='p gray small'>注意：很多品牌并不自己生产内存颗粒，而是采购三星、海力士、美光的颗粒进行加工和销售。</p>
+<h2 id="如何解读内存型号？"><a href="#如何解读内存型号？" class="headerlink" title="如何解读内存型号？"></a>如何解读内存型号？</h2><p>内存型号通常包含了关键信息，但 <emp>各家命名规则不一</emp>。一个<u>假设的例子</u> 可能像这样：<code>CMK16GX4M2B3200C16</code></p>
+<ul>
+<li><code>CMK</code>: 可能代表品牌系列 (如 Corsair Vengeance LPX)</li>
+<li><code>16G</code>: 总容量 (16GB)</li>
+<li><code>X4</code>: DDR4 类型</li>
+<li><code>M2</code>: 套装包含 2 条内存</li>
+<li><code>B</code>: 可能代表版本或其他内部标识</li>
+<li><code>3200</code>: 频率 (3200MHz)</li>
+<li><code>C16</code>: 主要时序 (CL16)</li>
+</ul>
+<span class='p red large'>重要提示</span>：解读具体型号最好的方法是 <u>查阅品牌官网</u> 或 <u>电商页面的详细规格</u>。<del>不要完全依赖猜测</del>。
+
+## 如何选择合适的内存？
+
+选择内存需要考虑以下几个方面：
+
+<div class='checkbox checked'><input type="checkbox" checked="checked"/>
+            <ol><li>兼容性</li></ol>
+            </div>
+<ul>
+<li><strong>主板支持</strong>: 查看主板规格说明，确认支持的内存 <span class='p blue'>类型</span> (DDR4/DDR5) 和 <span class='p green'>最大容量</span>、<span class='p yellow'>最高频率</span>。 <div class="tip success"><p>优先查阅主板官网的 QVL (Qualified Vendor List) 内存兼容列表 </p>
+</div>。</li>
+<li><strong>CPU 支持</strong>: CPU 的内存控制器也对支持的内存类型和速度有影响，通常主板兼容即可。</li>
+</ul>
+<div class='checkbox'><input type="checkbox" />
+            <ol><li>容量需求</li></ol>
+            </div>
+<ul>
+<li><strong>日常办公/影音</strong>: <span class='p gray'>8GB</span> (最低) - <span class='p green'>16GB</span> (推荐)</li>
+<li><strong>主流游戏/轻度创作</strong>: <span class='p green'>16GB</span> (起步) - <span class='p yellow'>32GB</span> (更佳)</li>
+<li><strong>大型游戏/专业设计/视频编辑</strong>: <span class='p yellow'>32GB</span> (推荐) - <span class='p blue'>64GB</span> 或更高</li>
+</ul>
+<div class='checkbox'><input type="checkbox" />
+            <ol><li>速度与时序</li></ol>
+            </div>
+<ul>
+<li>在预算范围内，尽量选择 <u>频率较高、时序较低</u> 的内存。</li>
+<li>关注平台优化：例如 AMD Ryzen 处理器通常能从高频内存中获益更多。</li>
+<li>对于 <span class='p green'>DDR5</span>，起步频率就很高，选择 <kbd>6000MHz</kbd> 左右是当前甜点。</li>
+</ul>
+<div class='checkbox checked'><input type="radio" checked="checked"/>
+            <ol><li>通道</li></ol>
+            </div>
+<ul>
+<li><strong>务必组建双通道</strong>: 购买 <kbd>2条</kbd> 或 <kbd>4条</kbd> 内存组成的套装，性能远好于单通道。查阅主板说明书，正确安装到推荐的插槽。</li>
+</ul>
+<div class='checkbox'><input type="radio" />
+            <ol><li>品牌与预算</li></ol>
+            </div>
+<ul>
+<li>选择信誉良好的品牌，提供较长质保（通常是终身质保）。</li>
+<li>根据预算在以上因素中做平衡。<wavy>不一定需要追求极限参数</wavy>。</li>
+</ul>
+<div class='checkbox times gray'><input type="checkbox" />
+            <ol><li>外观与散热 (非必需)</li></ol>
+            </div>
+<ul>
+<li>如果需要 RGB 灯效或在意机箱内部颜值，可以选择带散热马甲和灯光的型号。</li>
+<li>对于不超频的用户，标准内存条的散热通常足够。</li>
+</ul>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>内存是计算机流畅运行的基石。了解它的历史、原理和关键参数，可以帮助你做出更明智的选择，无论是购买新电脑还是升级现有设备。记住，<emp>兼容性是第一位的</emp>，其次根据你的 <u>需求和预算</u> 来平衡容量、速度和时序。</p>
+<p>希望这篇博客能帮助你更好地理解内存条！<span class='p cyan'>Happy Computing!</span></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Guonandu.github.io">kewua</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://guonandu.github.io/undefined/a8cf393e.html">https://guonandu.github.io/undefined/a8cf393e.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://Guonandu.github.io" target="_blank">kewua's Blog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://img.dexbug.com/i/2025/04/10/nkfrfu.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/undefined/81d38a56.html" title="储存数据：硬盘"><img class="cover" src="https://img.dexbug.com/i/2025/04/09/mar52v.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">储存数据：硬盘</div></div><div class="info-2"><div class="info-item-1">硬盘全解析：从历史到选购，你需要知道的一切硬盘驱动器（HDD）和固态硬盘（SSD）是现代计算机和数字设备中不可或缺的数据存储核心。无论是操作系统、应用程序还是珍贵的个人文件，都依赖于它们进行存储。本文将带你深入了解硬盘的世界，从它的诞生历史、不同种类、内部构造、工作原理，到如何解读品牌型号和做出明智的选购决策。 一、硬盘的简史：从庞然大物到掌中方寸硬盘的历史可以追溯到 1956 年，IBM 推出了世界上第一个硬盘驱动器——IBM 350 RAMAC (Random Access Method of Accounting and Control)。这个庞然大物需要一个大房间来容纳，重量超过一吨，但只能存储大约 3.75MB 的数据，成本极其高昂。 自那时起，硬盘技术经历了飞速发展：  体积小型化：从房间大小缩小到标准的 3.5 英寸（台式机）和 2.5 英寸（笔记本电脑）尺寸，甚至更小的 M.2 规格。 容量指数级增长：存储容量从 MB 级别跃升到 GB，再到如今常见的 huge（1TB = 1024GB）甚至 PB 级别。 速度提升：读写速度通过提高转速、改进接口（IDE...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/siteicon/gnd.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">kewua</div><div class="author-info-description">一个抑郁的人</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Guonandu/Guonandu.github.io"><i class="fab fa-github"></i><span>访问（源码）</span></a><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://t.me/kewuaaaa" target="_blank" title="telegram"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-telegram"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://github.com/Guonandu" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-github"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://discord.com/invite/mf8XBFc3" target="_blank" title="discord"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-discord"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://www.instagram.com/guonandu2?igsh=MXV1YTcxMTZvd2FoOA==" target="_blank" title="insgram"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-Insgram"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://x.com/GuoNandu" target="_blank" title="X"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-tuite"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://img.dexbug.com/i/2025/04/06/yuk5n6.jpg" target="_blank" title="weixin"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-weixin"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/499301507?spm_id_from=333.1007.0.0" target="_blank" title="BiliBili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a><a class="social-icon faa-parent animated-hover" href="tencent://Message/?Uin=2268025923&amp;amp;websiteName=local.edu.com:8888=&amp;amp;Menu=yes" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-shejiaotubiao-39"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">期待更新</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98%EF%BC%88RAM%EF%BC%89%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是内存（RAM）？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%9A%84%E5%8F%91%E5%B1%95%E7%AE%80%E5%8F%B2"><span class="toc-number">2.</span> <span class="toc-text">内存的发展简史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%9D%A1%E7%9A%84%E6%9E%84%E9%80%A0"><span class="toc-number">3.</span> <span class="toc-text">内存条的构造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%9A%84%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E8%A7%A3%E8%AF%BB"><span class="toc-number">4.</span> <span class="toc-text">内存的关键参数解读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%86%85%E5%AD%98%E5%93%81%E7%89%8C"><span class="toc-number">5.</span> <span class="toc-text">常见内存品牌</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E8%AF%BB%E5%86%85%E5%AD%98%E5%9E%8B%E5%8F%B7%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">如何解读内存型号？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">7.</span> <span class="toc-text">结语</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/undefined/a8cf393e.html" title="短期记忆:内存条"><img src="https://img.dexbug.com/i/2025/04/10/nkfrfu.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="短期记忆:内存条"/></a><div class="content"><a class="title" href="/undefined/a8cf393e.html" title="短期记忆:内存条">短期记忆:内存条</a><time datetime="2025-04-10T05:43:49.000Z" title="发表于 2025-04-10 13:43:49">2025-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/81d38a56.html" title="储存数据：硬盘"><img src="https://img.dexbug.com/i/2025/04/09/mar52v.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="储存数据：硬盘"/></a><div class="content"><a class="title" href="/undefined/81d38a56.html" title="储存数据：硬盘">储存数据：硬盘</a><time datetime="2025-04-09T05:14:28.000Z" title="发表于 2025-04-09 13:14:28">2025-04-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/e48d8421.html" title="关联一切：主板"><img src="https://img.dexbug.com/i/2025/04/08/xtqrfs.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关联一切：主板"/></a><div class="content"><a class="title" href="/undefined/e48d8421.html" title="关联一切：主板">关联一切：主板</a><time datetime="2025-04-08T12:31:34.000Z" title="发表于 2025-04-08 20:31:34">2025-04-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/2b2eba78.html" title="并行王者：GPU"><img src="https://img.dexbug.com/i/2025/04/08/j5najo.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="并行王者：GPU"/></a><div class="content"><a class="title" href="/undefined/2b2eba78.html" title="并行王者：GPU">并行王者：GPU</a><time datetime="2025-04-08T03:01:13.000Z" title="发表于 2025-04-08 11:01:13">2025-04-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/c0a411bf.html" title="深入解析CPU"><img src="https://img.dexbug.com/i/2025/04/07/xo922d.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深入解析CPU"/></a><div class="content"><a class="title" href="/undefined/c0a411bf.html" title="深入解析CPU">深入解析CPU</a><time datetime="2025-04-07T12:25:33.000Z" title="发表于 2025-04-07 20:25:33">2025-04-07</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://img.dexbug.com/i/2025/04/10/nkfrfu.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By kewua</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="1853321957" data-server="kugou" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrcType="-1"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 1rem;font-size: 15px;height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨ 有新文章啦！ 👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍗点击食用🍔</span></a></div></div><script>if ('serviceWorker' in navigator) {
+    if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.addEventListener('controllerchange', function() {
+            showNotification()
+        })
+    }
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+    })
+}
+function showNotification() {
+    if (GLOBAL_CONFIG.Snackbar) {
+        var snackbarBg =
+            document.documentElement.getAttribute('data-theme') === 'light' ?
+                GLOBAL_CONFIG.Snackbar.bgLight :
+                GLOBAL_CONFIG.Snackbar.bgDark
+        var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+        Snackbar.show({
+            text: '✨ 有新文章啦！ 👉',
+            backgroundColor: snackbarBg,
+            duration: 500000,
+            pos: snackbarPos,
+            actionText: '🍗点击食用🍔',
+            actionTextColor: '#fff',
+            onActionClick: function(e) {
+                location.reload()
+            },
+        })
+    } else {
+        var showBg =
+            document.documentElement.getAttribute('data-theme') === 'light' ?
+                '#3b70fc' :
+                '#1f1f1f'
+        var cssText = `top: 0; background: ${showBg};`
+        document.getElementById('app-refresh').style.cssText = cssText
+    }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索………" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = '396f19c15dd348de98faab3cf0910f63';
+  var gaud_map_key = '2db81e664c922ad111a81723bde07485';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '116.37273200,23.55096800';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" style="margin-inline:5px" data-title="本站已在粤进行备案" title=""><img src="https://img.shields.io/badge/粤ICP备-2025004213号-e1d492?style=flat&amp;logo=data:image/png;base64,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" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/Guonandu/Guonandu.github.io" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.2s');
+    arr[i].setAttribute('data-wow-delay', '1ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.cbd.int/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-koharu"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
